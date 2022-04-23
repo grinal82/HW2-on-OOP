@@ -136,7 +136,6 @@ def main():
     second_best_student.give_marks(cool_lecturer, 'Git', 10)
     second_best_student.give_marks(second_cool_lecturer, 'OOP', 10)
     second_best_student.give_marks(second_cool_lecturer, 'OOP', 8)
-
     
     cool_reviewer.courses_attached += ['Python']
     cool_reviewer.rate_hw(best_student, 'Python', 10)
@@ -172,10 +171,36 @@ def main():
     
     
     print()
-    # students = [best_student, second_best_student]
-    # lecturers = [cool_lecturer, second_cool_lecturer]
-    # courses = ['Python', 'Git', 'OOP']
+    students = [best_student, second_best_student]
+    lecturers = [cool_lecturer, second_cool_lecturer]
+    courses = ['Python', 'Git', 'OOP']
     
+    def student_avrg_course_grade(students, course):
+        all_grades = []
+        for student in students:
+            if course in student.grades:
+                all_grades.extend(student.grades[course])
+        if len(all_grades) > 0:
+            average_grade = round(sum(all_grades) / len(all_grades))
+        else:
+            return f'По курсу {course} оценок еще не выставлено'
+        return f'Средняя оценка по курсу {course} среди студентов:{average_grade}'
+    
+    def lecturer_avrg_course_grade(lecturers, course):
+        all_grades = []
+        for lecturer in lecturers:
+            if course in lecturer.grades:
+                all_grades.extend(lecturer.grades[course])
+        if len(all_grades) > 0:
+            average_grade = round(sum(all_grades) / len(all_grades))
+        else:
+            return f'По курсу {course} лекторам еще не ставили оценок'
+        return f'Средняя оценка лекторов по курсу {course}: {average_grade}'
+    
+    for course in courses:
+        print(student_avrg_course_grade(students, course))
+        print(lecturer_avrg_course_grade(lecturers, course))
+    print()   
     print(best_student)
     print()
     print(cool_lecturer)

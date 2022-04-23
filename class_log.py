@@ -12,7 +12,7 @@ class Student:
         self.finished_course.append(course_name)
 
     def give_marks(self, lecturer, course, grade):
-        if isinstance(lecturer, Lecturer) and lecturer in lecturer.courses_attached and course in self.courses_in_progress and course in lecturer.courses_attached:
+        if isinstance(lecturer, Lecturer) and course in self.courses_in_progress and course in lecturer.courses_attached:
             if course in lecturer.grades:
                 lecturer.grades[course] += [grade]
             else:
@@ -154,29 +154,31 @@ def main():
     second_cool_lecturer.courses_attached += ['Git']
     second_cool_lecturer.courses_attached += ['OOP']
     
-    # if cool_lecturer > second_cool_lecturer:
-    #     print(f'У лектора {cool_lecturer.name}{cool_lecturer.surname} средняя оценка выше!')
-    # elif cool_lecturer == second_cool_lecturer:
-    #     print(f'Средние оценки у лекторов {cool_lecturer.name}{cool_lecturer.surname} и {second_cool_lecturer.name}{second_cool_lecturer.surname} равны')
-    # else:
-    #     print(f'Средняя оценка у лектора {second_cool_lecturer.name}{second_cool_lecturer.surname} выше')
+    print()
+    
+    if cool_lecturer > second_cool_lecturer:
+        print(f'У лектора {cool_lecturer.name} {cool_lecturer.surname} средняя оценка выше!')
+    elif cool_lecturer == second_cool_lecturer:
+        print(f'Средние оценки у лекторов {cool_lecturer.name} {cool_lecturer.surname} и {second_cool_lecturer.name} {second_cool_lecturer.surname} равны')
+    else:
+        print(f'Средняя оценка у лектора {second_cool_lecturer.name} {second_cool_lecturer.surname} выше чкм у лектора {cool_lecturer.name}{cool_lecturer.surname}')
         
-    # if best_student > second_best_student:
-    #     print(f'У студента {best_student.name}{best_student.surname} средняя оценка выше чем у студента {second_best_student.name}{second_best_student.surname}')
-    # elif best_student == second_best_student:
-    #     print(f'Средние оценки у студентов {best_student.name}{best_student.surname} и {second_best_student.name}{second_best_student.surname} равны')
-    # else:
-    #     print(f'Средняя оценка у студента {second_best_student.name}{second_best_student.surname} выше чем у студента {best_student.name}{best_student.surname}')
+    if best_student > second_best_student:
+        print(f'У студента {best_student.name} {best_student.surname} средняя оценка выше чем у студента {second_best_student.name} {second_best_student.surname}')
+    elif best_student == second_best_student:
+        print(f'Средние оценки у студентов {best_student.name} {best_student.surname} и {second_best_student.name} {second_best_student.surname} равны')
+    else:
+        print(f'Средняя оценка у студента {second_best_student.name} {second_best_student.surname} выше чем у студента {best_student.name} {best_student.surname}')
     
     
-    
+    print()
     # students = [best_student, second_best_student]
     # lecturers = [cool_lecturer, second_cool_lecturer]
     # courses = ['Python', 'Git', 'OOP']
     
     print(best_student)
     print()
-    print(cool_lecturer.courses_attached)
+    print(cool_lecturer)
     print()
     print(cool_reviewer)
     
